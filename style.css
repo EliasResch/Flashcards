@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fcefe4;
+  color: #033e2c;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ea6f4a;
+}
+
+.logo img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.contact {
+  color: #ea6f4a;
+  font-size: 16px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 40px;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.category {
+  color: #ea6f4a;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 48px;
+  margin: 10px 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #5e5e5e;
+}
+
+.cta-button {
+  background-color: #ea6f4a;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: background 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #d95d38;
+}
+
+.hero-image img {
+  max-width: 450px;
+  border-radius: 200px 200px 0 0;
+  object-fit: cover;
+}
