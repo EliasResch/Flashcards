@@ -80,3 +80,7 @@ h1 {
   border-radius: 200px 200px 0 0;
   object-fit: cover;
 }
+
+.learn {
+  size: 2pc;
+}
