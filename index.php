@@ -41,8 +41,16 @@
     
   </main>
 
-  
+  </main>
 
+  <footer>
+    <p>&copy; 2025 Flashcards. Alle Rechte vorbehalten. 
+        <a href="impressum.html" style="color: #007bff; text-decoration: none;">Impressum</a>
+    </p>
+</footer>
+
+</body>
+</html>
 
   
 </body>
