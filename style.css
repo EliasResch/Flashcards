@@ -3,6 +3,7 @@ body {
   font-family: "Segoe UI", sans-serif;
   background-color: #fcefe4;
   color: #033e2c;
+  padding-left: 20px;
 }
 
 header {
@@ -86,7 +87,7 @@ h1 {
 }
 
 .flashcards-info {
-  background-color: #f1f9ff;
+  background-color: #f8f5f5;
   border-left: 4px solid #d95d38;
   padding: 1rem 1.5rem;
   margin: 2rem 0;
@@ -94,6 +95,8 @@ h1 {
   font-size: 1.1rem;
   line-height: 1.6;
   color: #333;
+  flex: 1;
+  max-width: 60%;
 }
 
 .flashcards-info strong {

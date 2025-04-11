@@ -36,7 +36,6 @@
     <br>
     <div class="tx-image">
     
-    <a href="#" class="cta-button">UNIT 1</a>
       
     </div>
     
