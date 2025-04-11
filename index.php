@@ -17,11 +17,12 @@
   </header>
   <main class="tx">
     <div class="tx-text">
-      <h1> Was ist Flashcards</h1>
+      <h1> Was ist Flashcards</h1><br>
+      <p></p>
       
 
       <a href="#" class="cta-button">Eigene Karten erstellen</a>
-    </div>
+    </div><br>
     <div class="tx-image">
       
     </div>
