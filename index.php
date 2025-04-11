@@ -18,11 +18,22 @@
   <main class="tx">
     <div class="tx-text">
       <h1> Was ist Flashcards</h1><br>
-      <p></p>
+      </div>
+
+      <div class="flashcards-info">
+    <p>
+        <strong>Flashcards</strong> ist eine Online-Lernplattform, mit der man auf einfache
+        Weise digitale Karteikarten erstellen und lernen kann.
+        Die Grundidee ist simpel: Auf eine Seite der Karteikarte kommt eine Frage, 
+        ein Begriff oder ein Wort – auf die Rückseite die passende Antwort, Definition oder Übersetzung.
+    </p>
+    <p>
+        Durch verschiedene Lernmodi wie Abfragen hilft Flashcards dabei, Wissen langfristig zu speichern – ideal zur Prüfungsvorbereitung oder zum Vokabellernen.
+    </p>
       
 
-      <a href="#" class="cta-button">Eigene Karten erstellen</a>
-    </div><br>
+    </div>      <a href="#" class="cta-button">Eigene Karten erstellen</a>
+    <br>
     <div class="tx-image">
     
     <a href="#" class="cta-button">UNIT 1</a>
