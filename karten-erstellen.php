@@ -8,12 +8,12 @@
 </head>
 <body>
     <form>
-        <input type="text" class="Karteikarten-Objekts" placeholder="Original"><br>
+        <input type="text" class="" placeholder="Original"><br>
         <input type="text" class="Karteikarten-Objekts" placeholder="Übersetzung"><br>
-        <input type="submit" class="Karteikarten-Objekts" value="Zum Deck hunzufügen">
-        <input type="button" class="Karteikarten-Objekts" value="Zur Übersicht">
-
+        <input type="submit" class="cta-button" value="Zum Deck hunzufügen"><br>
+        <input type="button" class="cta-button" value="Zur Übersicht">
     </form>
+    
 
 </body>
 </html>
