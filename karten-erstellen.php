@@ -6,14 +6,13 @@
     <link rel="stylesheet" href="style.css">
     <title>Karten Erstellen</title>
 </head>
-<body>
-    <form>
-        <input type="text" class="" placeholder="Original"><br>
-        <input type="text" class="Karteikarten-Objekts" placeholder="Übersetzung"><br>
-        <input type="submit" class="cta-button" value="Zum Deck hunzufügen"><br>
+<body class="karten-erstellen">
+<form>
+        <input type="text" class="styled-input" placeholder="Original"><br>
+        <input type="text" class="styled-input" placeholder="Übersetzung"><br>
+        <input type="submit" class="cta-button" value="Zum Deck hinzufügen"><br>
         <input type="button" class="cta-button" value="Zur Übersicht">
     </form>
-    
 
 </body>
 </html>

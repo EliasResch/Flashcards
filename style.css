@@ -5,6 +5,16 @@ body {
   color: #033e2c;
   padding-left: 20px;
 }
+.karten-erstellen {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fcefe4;
+  color: #033e2c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 header {
   display: flex;
@@ -65,11 +75,15 @@ h1 {
 .cta-button {
   background-color: #ea6f4a;
   color: white;
-  padding: 15px 30px;
+  padding: 20px 40px;
   text-decoration: none;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: 5px;
   transition: background 0.3s;
+  font-size: 24px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 10px;
 }
 
 .cta-button:hover {
@@ -89,10 +103,10 @@ h1 {
 .flashcards-info {
   background-color: #f8f5f5;
   border-left: 4px solid #d95d38;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.rem;
   margin: 2rem 0;
   border-radius: 8px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: #333;
   flex: 1;
@@ -120,4 +134,30 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+
+form {
+  background-color: #ffffff;
+  padding: 100px 200px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.styled-input {
+  border: 4px solid #007BFF;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 32px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+.styled-input:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
