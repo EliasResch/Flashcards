@@ -103,7 +103,7 @@ h1 {
 .flashcards-info {
   background-color: #f8f5f5;
   border-left: 4px solid #d95d38;
-  padding: 1rem 1.rem;
+  padding: 1rem 1rem;
   margin: 2rem 0;
   border-radius: 8px;
   font-size: 1rem;
@@ -136,7 +136,6 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/
 form {
   background-color: #ffffff;
   padding: 100px 200px;
@@ -146,7 +145,7 @@ form {
 }
 
 .styled-input {
-  border: 4px solid #007BFF;
+  border: 4px solid #007bff;
   padding: 20px;
   border-radius: 10px;
   font-size: 32px;
