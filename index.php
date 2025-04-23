@@ -44,7 +44,7 @@ if ($conn->connect_error) {
       </p>
 
 
-    </div> <a href="karten-erstellen.php" class="cta-button">Eigene Karten erstellen</a>
+    </div> <a href="deck-erstellen.php" class="cta-button">Neues Deck Erstellen</a>
     <br>
     <div class="tx-image">
     
