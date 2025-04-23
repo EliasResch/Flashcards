@@ -198,3 +198,25 @@ body.impressum a {
 body.impressum a:hover {
   text-decoration: underline;
 }
+
+/* IDatenschutz*/
+
+.datenschutz-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.datenschutz-container h1,
+.datenschutz-container h2 {
+  color: #005f73;
+}
+
+.datenschutz-container h1 {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.5em;
+}
