@@ -31,10 +31,11 @@
       </p>
       <p>
         Durch verschiedene Lernmodi wie Abfragen hilft Flashcards dabei, Wissen langfristig zu speichern – ideal zur Prüfungsvorbereitung oder zum Vokabellernen.
-      </p>
+      </p><br>
 
 
-    </div> <a href="karten-erstellen.php" class="cta-button">Eigene Karten erstellen</a>
+    </div> <br>
+    <a href="karten-erstellen.php" class="cta-button">Eigene Karten erstellen</a><br>
     <br>
     <div class="tx-image">
     
