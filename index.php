@@ -42,19 +42,12 @@ if ($conn->connect_error) {
       <p>
         Durch verschiedene Lernmodi wie Abfragen hilft Flashcards dabei, Wissen langfristig zu speichern – ideal zur Prüfungsvorbereitung oder zum Vokabellernen.
       </p><br>
+      </div> <br>
 
 
-<<<<<<< HEAD
-    </div> <br>
-    <a href="karten-erstellen.php" class="cta-button">Eigene Karten erstellen</a><br>
-=======
-    </div> <a href="deck-erstellen.php" class="cta-button">Neues Deck Erstellen</a>
->>>>>>> 88d2041aa0b1b1bc3fb427ffaf4cd0fc69ca4812
+    <a href="deck-erstellen.php" class="cta-button">Neues Deck Erstellen</a>
     <br>
-    <div class="tx-image">
     
-      
-    </div>
 
   </main>
 
