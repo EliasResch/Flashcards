@@ -45,7 +45,11 @@ if ($conn->connect_error) {
       </div> <br>
 
 
+<<<<<<< HEAD
     <a href="deck-erstellen.php" class="cta-button">Neues Deck Erstellen</a>
+=======
+    </div> <a href="deck-erstellen.php" class="cta-button">Neues Deck Erstellen</a>
+>>>>>>> 2d298e15fb13813c9e0e10b46ff9576f0080e1c6
     <br>
     
 
