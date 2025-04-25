@@ -8,7 +8,7 @@
 </head>
 <body>
     <form action="karten-erstellen.php">
-        <input type="text" class="styled-input" placeholder="Name des Decks">
+        <input type="text" class="styled-input" placeholder="Name des Decks" required>
         <input type="submit" class="cta-button" value="Deck Erstellen">
     </form>
 </body>

@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php if (isset($message)): ?>
         <p class="message"><?php echo $message; ?></p>
     <?php endif; ?>
-    <form method="POST" action="">
+    <form method="POST" action="karten.sql">
         <input type="text" name="original" class="styled-input" placeholder="Original" required><br>
         <input type="text" name="uebersetzung" class="styled-input" placeholder="Übersetzung" required><br>
         <input type="submit" class="cta-button" value="Zum Deck hinzufügen"><br>
