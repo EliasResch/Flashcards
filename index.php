@@ -56,7 +56,8 @@ if ($conn->connect_error) {
 
   <footer>
     <p>&copy; 2025 Flashcards. Alle Rechte vorbehalten. 
-        <a href="impressum.html" style="color: #007bff; text-decoration: none;">Impressum</a>
+        <a href="impressum.html" style="color: #ea6f4a; text-decoration: none;">Impressum, </a>
+        <a href="Datenschutz.html" style="color: #ea6f4a; text-decoration: none;">Dateschutzerklärung</a>
     </p>
 </footer>
 
