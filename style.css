@@ -161,6 +161,7 @@ form {
   border-color: #0056b3;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+
 /* Impressum Styles */
 body.impressum {
   font-family: Arial, sans-serif;
@@ -219,4 +220,15 @@ body.impressum a:hover {
 .datenschutz-container h1 {
   border-bottom: 2px solid #ccc;
   padding-bottom: 0.5em;
+}
+
+/* Bild rechts platzieren und obere Kanten abrunden */
+#karten {
+  position: absolute;
+  top: 7%; /* Abstand von oben */
+  right: 6%; /* Abstand von rechts */
+  max-width: 25%; /* Maximale Breite des Bildes */
+  border-radius: 10% 10% 10% 10%; /* Abrundung der oberen Kanten */
+  object-fit: cover; /* Bild proportional skalieren */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Schatten für ein schöneres Design */
 }
