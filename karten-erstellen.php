@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
     $sql = "INSERT INTO $table_name (original, uebersetzung) VALUES ('$original', '$uebersetzung')";
 
     if ($conn->query($sql) === TRUE) {
-        $message = "Karte erfolgreich hinzugefügt!";
+        $message = "";
     } else {
         $message = "Fehler: " . $conn->error;
     }
