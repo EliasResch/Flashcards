@@ -16,13 +16,22 @@ while ($row = $result->fetch_assoc()) {
 }
 
 // Neue Karte hinzufügen
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
+    $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['deck']);
+    $table_name = "deck_" . $deck_name;
+    $conn = new mysqli("localhost", "root", "", "karteikarten");
     $original = $conn->real_escape_string($_POST['original']);
     $uebersetzung = $conn->real_escape_string($_POST['uebersetzung']);
+
+    // Insert card into the specific deck table
     $sql = "INSERT INTO $table_name (original, uebersetzung) VALUES ('$original', '$uebersetzung')";
-    $conn->query($sql);
-    header("Location: deck-ansicht.php?deck=" . urlencode($deck_name));
-    exit();
+
+    if ($conn->query($sql) === TRUE) {
+        $message = "";
+    } else {
+        $message = "Fehler: " . $conn->error;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -60,34 +69,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </button>
         </div>
 
-        <!-- Fortschrittsanzeige -->
-        <div class="progress-indicator">
-            <span id="progress">1/<?php echo count($cards); ?></span>
-        </div>
-
-        <form method="POST" class="mt-5">
-            <h3>Neue Karte hinzufügen</h3>
-            <div class="mb-3">
-                <input type="text" name="original" class="form-control" placeholder="Original" required>
-            </div>
-            <div class="mb-3">
-                <input type="text" name="uebersetzung" class="form-control" placeholder="Übersetzung" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Hinzufügen</button>
-            <a href="index.php" class="btn btn-secondary">Zurück</a>
-        </form>
-    </div>
+        <?php if (isset($message)): ?>
+        <p class="message"><?php echo $message; ?></p>
+    <?php endif; ?>
+    <form method="POST" action="deck-karten.php?deck=<?php echo urlencode($_GET['deck']); ?>">
+        <input type="text" name="original" class="styled-input" placeholder="Original" required><br>
+        <input type="text" name="uebersetzung" class="styled-input" placeholder="Übersetzung" required><br>
+        <input type="submit" class="cta-button" value="Zum Deck hinzufügen"><br>
+        <input type="button" class="cta-button" value="Zur Übersicht" onclick="window.location.href='index.php';">
+    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const carousel = document.querySelector('#carouselExampleFade');
-        const progress = document.querySelector('#progress');
-        const totalCards = <?php echo count($cards); ?>;
-
-        carousel.addEventListener('slid.bs.carousel', (event) => {
-            const currentIndex = event.to + 1; // Carousel index starts at 0
-            progress.textContent = `${currentIndex}/${totalCards}`;
-        });
-    </script>
 </body>
 </html>

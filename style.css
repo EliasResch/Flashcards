@@ -5,6 +5,7 @@ body {
   color: #033e2c;
   padding-left: 20px;
 }
+
 .karten-erstellen {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -116,6 +117,7 @@ h1 {
 .flashcards-info strong {
   color: peru;
 }
+
 footer {
   background-color: #f8f9fa;
   padding: 20px;
@@ -136,13 +138,15 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Karteikarten Erstellen Styles*/
+/* Karteikarten Erstellen Styles */
 form {
   background-color: #ffffff;
-  padding: 100px 200px;
-  border-radius: 10px;
+  padding: 100px 100px;
+  border-radius: 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  max-width: fit-content;
+  margin: auto;
 }
 
 .styled-input {
@@ -200,8 +204,7 @@ body.impressum a:hover {
   text-decoration: underline;
 }
 
-/* IDatenschutz*/
-
+/* Datenschutz */
 .datenschutz-container {
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -225,10 +228,72 @@ body.impressum a:hover {
 /* Bild rechts platzieren und obere Kanten abrunden */
 #karten {
   position: absolute;
-  top: 7%; /* Abstand von oben */
-  right: 6%; /* Abstand von rechts */
-  max-width: 25%; /* Maximale Breite des Bildes */
-  border-radius: 10% 10% 10% 10%; /* Abrundung der oberen Kanten */
-  object-fit: cover; /* Bild proportional skalieren */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Schatten für ein schöneres Design */
+  top: 7%;
+  right: 6%;
+  max-width: 25%;
+  border-radius: 10% 10% 10% 10%;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Container für die Deck-Karten */
+.deck-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Einzelne Deck-Karte */
+.deck-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover-Effekt für die Karten */
+.deck-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Titel der Deck-Karte */
+.deck-card h2 {
+  font-size: 24px;
+  color: #033e2c;
+  margin-bottom: 10px;
+}
+
+/* Text in der Deck-Karte */
+.deck-card p {
+  font-size: 16px;
+  color: #5e5e5e;
+  margin-bottom: 20px;
+}
+
+/* Carousel Styles */
+.carousel {
+  background-color: #ffffff;
+  border-radius: 30px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  max-width: 400px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(-20deg) brightness(90%);
+}
+
+.progress-indicator {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
 }
