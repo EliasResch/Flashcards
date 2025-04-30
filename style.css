@@ -192,7 +192,7 @@ body.impressum p {
 }
 
 body.impressum a {
-  color: #007bff;
+  color: #eacf4a;
   text-decoration: none;
 }
 
@@ -200,26 +200,33 @@ body.impressum a:hover {
   text-decoration: underline;
 }
 
-/* IDatenschutz*/
-
-.datenschutz-container {
+body.datenschutz,
+body.impressum {
   font-family: Arial, sans-serif;
-  line-height: 1.6;
-  padding: 20px;
+  margin: 2rem auto;
   max-width: 800px;
-  margin: auto;
-  background-color: #f9f9f9;
+  line-height: 1.8;
   color: #333;
+  text-align: center;
 }
 
-.datenschutz-container h1,
-.datenschutz-container h2 {
-  color: #005f73;
+body.datenschutz h1,
+body.impressum h1,
+body.datenschutz h2,
+body.impressum h2 {
+  color: #ea6f4a;
+  margin-bottom: 1rem;
 }
 
-.datenschutz-container h1 {
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 0.5em;
+body.datenschutz a,
+body.impressum a {
+  color: #eacf4a;
+  text-decoration: none;
+}
+
+body.datenschutz a:hover,
+body.impressum a:hover {
+  text-decoration: underline;
 }
 
 /* Bild rechts platzieren und obere Kanten abrunden */
