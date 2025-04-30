@@ -1,11 +1,21 @@
 <?php
-// Datenbankverbindung
-
+// Fetch all deck tables
+$decks = [];
 $conn = new mysqli("localhost", "root", "", "karteikarten");
+$result = $conn->query("SHOW TABLES LIKE 'deck_%'");
+while ($row = $result->fetch_array()) {
+    $table_name = $row[0];
+    $deck_name = str_replace("deck_", "", $table_name);
 
-// Verbindung prüfen
-if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
+    // Count cards in the deck
+    $count_result = $conn->query("SELECT COUNT(*) AS count FROM $table_name");
+    $count = $count_result->fetch_assoc()['count'];
+
+    $decks[] = [
+        'name' => $deck_name,
+        'count' => $count,
+        'table' => $table_name
+    ];
 }
 ?>
 <!DOCTYPE html>
@@ -50,6 +60,14 @@ if ($conn->connect_error) {
     
     <img id="karten" src="img/Karten.jpg" alt="karten">
     
+    <br>
+        <?php foreach ($decks as $deck): ?>
+            <div class="flashcards-info">
+                <strong><?php echo htmlspecialchars($deck['name']); ?></strong>
+                <p>Karten: <?php echo $deck['count']; ?></p>
+                <a href="karten-erstellen.php?deck=<?php echo urlencode($deck['name']); ?>" class="cta-button">Deck öffnen</a>
+            </div>
+        <?php endforeach; ?>
 
   </main>
 
