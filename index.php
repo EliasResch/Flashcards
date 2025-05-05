@@ -61,13 +61,15 @@ while ($row = $result->fetch_array()) {
     <img id="karten" src="img/Karten.jpg" alt="karten">
     
     <br>
-        <?php foreach ($decks as $deck): ?>
-            <div class="flashcards-info">
-                <strong><?php echo htmlspecialchars($deck['name']); ?></strong>
-                <p>Karten: <?php echo $deck['count']; ?></p>
-                <a href="karten-erstellen.php?deck=<?php echo urlencode($deck['name']); ?>" class="cta-button">Deck öffnen</a>
-            </div>
-        <?php endforeach; ?>
+    <div class="deck-container">
+    <?php foreach ($decks as $deck): ?>
+        <div class="deck-card">
+            <h2><?php echo htmlspecialchars($deck['name']); ?></h2>
+            <p>Karten: <?php echo $deck['count']; ?></p>
+            <a href="deck-karten.php?deck=<?php echo urlencode($deck['name']); ?>" class="cta-button">Deck öffnen</a>
+        </div>
+    <?php endforeach; ?>
+</div>
 
   </main>
 
