@@ -67,6 +67,10 @@ while ($row = $result->fetch_array()) {
             <h2><?php echo htmlspecialchars($deck['name']); ?></h2>
             <p>Karten: <?php echo $deck['count']; ?></p>
             <a href="deck-karten.php?deck=<?php echo urlencode($deck['name']); ?>" class="cta-button">Deck öffnen</a>
+            <form method="POST" action="deck-loeschen.php" onsubmit="return confirm('Möchten Sie dieses Deck wirklich löschen?');">
+                <input type="hidden" name="deck_name" value="<?php echo htmlspecialchars($deck['name']); ?>">
+                <button type="submit" class="cta-button">Deck löschen</button>
+            </form>
         </div>
     <?php endforeach; ?>
 </div>

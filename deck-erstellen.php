@@ -1,29 +1,47 @@
 <?php
-if (!isset($_GET['deck'])) {
-    header("Location: index.php");
-    exit();
-}
-
-$deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['deck']);
-$table_name = "deck_" . $deck_name;
+// Verbindung zur Datenbank herstellen
 $conn = new mysqli("localhost", "root", "", "karteikarten");
 
-// Karten aus dem Deck abrufen
-$cards = [];
-$result = $conn->query("SELECT * FROM $table_name");
-while ($row = $result->fetch_assoc()) {
-    $cards[] = $row;
+if ($conn->connect_error) {
+    die("Verbindung zur Datenbank fehlgeschlagen: " . $conn->connect_error);
 }
 
-// Neue Karte hinzufügen
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $original = $conn->real_escape_string($_POST['original']);
-    $uebersetzung = $conn->real_escape_string($_POST['uebersetzung']);
-    $sql = "INSERT INTO $table_name (original, uebersetzung) VALUES ('$original', '$uebersetzung')";
-    $conn->query($sql);
-    header("Location: deck-ansicht.php?deck=" . urlencode($deck_name));
-    exit();
+// Variablen initialisieren
+$deck_name = "";
+$cards = [];
+$error = "";
+
+// Deck erstellen
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deck_name'])) {
+    $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_POST['deck_name']);
+    if (empty($deck_name)) {
+        $error = "Bitte geben Sie einen gültigen Deck-Namen ein.";
+    } else {
+        $table_name = "deck_" . $deck_name;
+
+        // Prüfen, ob die Tabelle bereits existiert
+        $result = $conn->query("SHOW TABLES LIKE '$table_name'");
+        if ($result->num_rows > 0) {
+            $error = "Ein Deck mit diesem Namen existiert bereits.";
+        } else {
+            // Tabelle erstellen
+            $sql = "CREATE TABLE $table_name (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                original TEXT NOT NULL,
+                uebersetzung TEXT NOT NULL
+            )";
+
+            if ($conn->query($sql) === TRUE) {
+                header("Location: deck-erstellen.php?deck=" . urlencode($deck_name));
+                exit();
+            } else {
+                $error = "Fehler beim Erstellen des Decks: " . $conn->error;
+            }
+        }
+    }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,58 +54,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Deck: <?php echo htmlspecialchars($deck_name); ?></h1>
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <?php foreach ($cards as $index => $card): ?>
-                    <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                        <div class="d-flex flex-column align-items-center">
-                            <h2 class="text-primary">Original</h2>
-                            <p class="fs-4"><?php echo htmlspecialchars($card['original']); ?></p>
-                            <h2 class="text-success mt-4">Übersetzung</h2>
-                            <p class="fs-4"><?php echo htmlspecialchars($card['uebersetzung']); ?></p>
+        <?php if (empty($deck_name)): ?>
+            <h1 class="text-center">Neues Deck erstellen</h1>
+            <?php if (!empty($error)): ?>
+                <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
+            <?php endif; ?>
+            <form method="POST" class="mt-4">
+                <div class="mb-3">
+                    
+                    <input type="text" name="deck_name" id="deck_name" class="styled-input" placeholder="Deck-Name" required>
+                </div>
+                <button type="submit" class="cta-button">Deck erstellen</button>
+                <a href="index.php" class="cta-button" id="deck-erstellen-zurück">Zurück</a>
+            </form>
+        <?php else: ?>
+            <h1 class="text-center">Deck: <?php echo htmlspecialchars($deck_name); ?></h1>
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <?php foreach ($cards as $index => $card): ?>
+                        <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                            <div class="d-flex flex-column align-items-center">
+                                <h2 class="text-primary">Original</h2>
+                                <p class="fs-4"><?php echo htmlspecialchars($card['original']); ?></p>
+                                <h2 class="text-success mt-4">Übersetzung</h2>
+                                <p class="fs-4"><?php echo htmlspecialchars($card['uebersetzung']); ?></p>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
 
-        <!-- Fortschrittsanzeige -->
-        <div class="progress-indicator">
-            <span id="progress">1/<?php echo count($cards); ?></span>
-        </div>
+            <!-- Fortschrittsanzeige -->
+            <div class="progress-indicator">
+                <span id="progress">1/<?php echo count($cards); ?></span>
+            </div>
 
-        <form method="POST" class="mt-5">
-            <h3>Neue Karte hinzufügen</h3>
-            <div class="mb-3">
-                <input type="text" name="original" class="form-control" placeholder="Original" required>
-            </div>
-            <div class="mb-3">
-                <input type="text" name="uebersetzung" class="form-control" placeholder="Übersetzung" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Hinzufügen</button>
-            <a href="index.php" class="btn btn-secondary">Zurück</a>
-        </form>
+            <form method="POST" class="mt-5">
+                <h3>Neue Karte hinzufügen</h3>
+                <div class="mb-3">
+                    <label for="original" class="form-label">Original</label>
+                    <input type="text" name="original" id="original" class="form-control" placeholder="Originaltext" required>
+                </div>
+                <div class="mb-3">
+                    <label for="uebersetzung" class="form-label">Übersetzung</label>
+                    <input type="text" name="uebersetzung" id="uebersetzung" class="form-control" placeholder="Übersetzung" required>
+                </div>
+                <button type="submit" class="btn btn-success">Karte hinzufügen</button>
+                <a href="index.php" class="btn btn-secondary">Zurück</a>
+            </form>
+        <?php endif; ?>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const carousel = document.querySelector('#carouselExampleFade');
-        const progress = document.querySelector('#progress');
-        const totalCards = <?php echo count($cards); ?>;
-
-        carousel.addEventListener('slid.bs.carousel', (event) => {
-            const currentIndex = event.to + 1; // Carousel index starts at 0
-            progress.textContent = `${currentIndex}/${totalCards}`;
-        });
-    </script>
 </body>
 </html>
