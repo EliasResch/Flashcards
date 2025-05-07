@@ -166,8 +166,9 @@ form {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Impressum Styles */
-body.impressum {
+/* Gemeinsame Styles für Impressum und Datenschutz */
+body.impressum,
+body.datenschutz {
   font-family: Arial, sans-serif;
   margin: 2rem auto;
   max-width: 800px;
@@ -176,60 +177,33 @@ body.impressum {
 }
 
 body.impressum h1,
-body.impressum h2 {
+body.datenschutz h1 {
+  font-size: 2.5rem;
+  text-align: center;
   color: #ea6f4a;
   margin-bottom: 1rem;
 }
 
-body.impressum h1 {
-  font-size: 2.5rem;
-  text-align: center;
-}
-
-body.impressum h2 {
+body.impressum h2,
+body.datenschutz h2 {
   font-size: 1.5rem;
-  margin-top: 2rem;
+  color: #ea6f4a;
+  margin: 2rem 0 1rem;
 }
 
-body.impressum p {
+body.impressum p,
+body.datenschutz p {
   margin: 0.5rem 0;
 }
 
-body.impressum a {
+body.impressum a,
+body.datenschutz a {
   color: #eacf4a;
   text-decoration: none;
 }
 
-body.impressum a:hover {
-  text-decoration: underline;
-}
-
-/* Datenschutz */
-.datenschutz-container {
-  font-family: Arial, sans-serif;
-  margin: 2rem auto;
-  max-width: 800px;
-  line-height: 1.8;
-  color: #333;
-  text-align: center;
-}
-
-body.datenschutz h1,
-body.impressum h1,
-body.datenschutz h2,
-body.impressum h2 {
-  color: #ea6f4a;
-  margin-bottom: 1rem;
-}
-
-body.datenschutz a,
-body.impressum a {
-  color: #eacf4a;
-  text-decoration: none;
-}
-
-body.datenschutz a:hover,
-body.impressum a:hover {
+body.impressum a:hover,
+body.datenschutz a:hover {
   text-decoration: underline;
 }
 
@@ -307,8 +281,7 @@ body.impressum a:hover {
   color: #333;
 }
 
-#deck-erstellen-zurück{
+#deck-erstellen-zurück {
   position: relative;
   top: 20px;
 }
-

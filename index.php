@@ -59,6 +59,7 @@ while ($row = $result->fetch_array()) {
     <br>
     
     <img id="karten" src="img/Karten.jpg" alt="karten">
+    <br>
     
     <br>
     <div class="deck-container">
