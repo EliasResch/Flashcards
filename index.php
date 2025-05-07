@@ -1,5 +1,4 @@
 <?php
-// Fetch all deck tables
 $decks = [];
 $conn = new mysqli("localhost", "root", "", "karteikarten");
 $result = $conn->query("SHOW TABLES LIKE 'deck_%'");
@@ -7,7 +6,6 @@ while ($row = $result->fetch_array()) {
     $table_name = $row[0];
     $deck_name = str_replace("deck_", "", $table_name);
 
-    // Count cards in the deck
     $count_result = $conn->query("SELECT COUNT(*) AS count FROM $table_name");
     $count = $count_result->fetch_assoc()['count'];
 
@@ -20,7 +18,6 @@ while ($row = $result->fetch_array()) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

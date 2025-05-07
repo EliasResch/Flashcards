@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Deck: <?php echo htmlspecialchars($deck_name); ?></h1>
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="false">
             <div class="carousel-inner">
                 <?php foreach ($cards as $index => $card): ?>
                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
