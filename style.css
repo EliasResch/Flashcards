@@ -74,17 +74,18 @@ h1 {
 }
 
 .cta-button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 16px;
+  white-space: nowrap; /* Verhindert Zeilenumbrüche */
+  overflow: visible; /* Verhindert das Abschneiden von Text */
+  text-align: center;
+  border: none;
+  border-radius: 5px;
   background-color: #ea6f4a;
   color: white;
-  padding: 20px 40px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background 0.3s;
-  font-size: 24px;
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
@@ -166,7 +167,7 @@ form {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Gemeinsame Styles für Impressum und Datenschutz */
+/*  Styles für Impressum und Datenschutz */
 body.impressum,
 body.datenschutz {
   font-family: Arial, sans-serif;
