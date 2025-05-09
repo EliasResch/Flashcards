@@ -92,6 +92,12 @@ h1 {
   background-color: #d95d38;
 }
 
+.delete-button {
+  display: block;
+  margin: auto; /* zentriert horizontal */
+  background-color: #e74c3c; /* Beispiel-Farbe */
+}
+
 .hero-image img {
   max-width: 450px;
   border-radius: 200px 200px 0 0;

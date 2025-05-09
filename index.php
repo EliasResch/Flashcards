@@ -49,7 +49,7 @@ while ($row = $result->fetch_array()) {
       <p>
         Durch verschiedene Lernmodi wie Abfragen hilft Flashcards dabei, Wissen langfristig zu speichern – ideal zur Prüfungsvorbereitung oder zum Vokabellernen.
       </p><br>
-      </div> <br>
+      </div> 
 
 
     <a href="deck-erstellen.php" class="cta-button">Neues Deck Erstellen</a>
@@ -67,7 +67,7 @@ while ($row = $result->fetch_array()) {
             <a href="deck-karten.php?deck=<?php echo urlencode($deck['name']); ?>" class="cta-button">Deck öffnen</a>
             <form method="POST" action="deck-loeschen.php" onsubmit="return confirm('Möchten Sie dieses Deck wirklich löschen?');">
                 <input type="hidden" name="deck_name" value="<?php echo htmlspecialchars($deck['name']); ?>">
-                <button type="submit" class="cta-button">Deck löschen</button>
+                <button type="submit" class="cta-button delete-button">Deck löschen</button>
             </form>
         </div>
     <?php endforeach; ?>
