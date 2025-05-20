@@ -88,7 +88,7 @@ h1 {
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: auto;
+  margin: auto; /*mittig*/
 }
 
 .cta-button:hover {
@@ -280,7 +280,8 @@ body.datenschutz a:hover {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(-20deg) brightness(90%);
+  filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(-20deg)
+    brightness(90%);
 }
 
 .progress-indicator {
@@ -337,10 +338,29 @@ body.datenschutz a:hover {
   font-size: large;
 }
 
-
 #startseite {
   position: relative;
   top: 5px;
   padding: 20px;
   font-size: large;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 40px;
+  gap: 16px; /* Abstand zwischen Logo und Text */
+  margin-bottom: 20px;
+}
+
+.logo-img {
+  height: 48px;
+  margin-right: 10px;
+}
+
+header h1 {
+  display: inline;
+  margin: 0;
+  vertical-align: middle;
 }
