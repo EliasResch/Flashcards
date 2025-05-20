@@ -32,12 +32,12 @@ while ($row = $result->fetch_array()) {
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
   <header>
-    <img src="img/flash.jpg" alt="Flashcards Logo" class="logo-img">
+    <img src="img/flash.png" alt="Flashcards Logo" class="logo-img">
     <h1>Flashcards</h1>
   </header>
   <main class="tx">
     <div class="tx-text">
-      <h1> Was ist Flashcards</h1><br>
+      <h1> Was ist Flashcards ?</h1><br>
     </div>
 
     <div class="flashcards-info">
