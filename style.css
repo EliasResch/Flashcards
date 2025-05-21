@@ -89,10 +89,12 @@ h1 {
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: auto; /*mittig*/
+  text-decoration: none;
 }
 
 .cta-button:hover {
   background-color: #d95d38;
+  text-decoration: none;
 }
 
 .delete-button {
@@ -136,6 +138,7 @@ footer {
   border-top: 1px solid #ddd;
   font-size: 14px;
   color: #333;
+  text-decoration: none;
 }
 
 footer a {
@@ -145,7 +148,7 @@ footer a {
 }
 
 footer a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Karteikarten Erstellen Styles */
@@ -168,12 +171,14 @@ form {
   max-width: 400px;
   box-sizing: border-box;
   margin-bottom: 15px;
+  text-decoration: none;
 }
 
 .styled-input:focus {
   outline: none;
   border-color: #0056b3;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  text-decoration: none;
 }
 
 /*  Styles für Impressum und Datenschutz */
@@ -363,4 +368,15 @@ header h1 {
   display: inline;
   margin: 0;
   vertical-align: middle;
+}
+
+.bearbeiten  {
+  font-size: 40px; 
+  color: black; 
+  text-decoration: none; 
+  transition: text-decoration 0.3s ease; 
+}
+
+.bearbeiten:hover {
+  text-decoration: underline; 
 }

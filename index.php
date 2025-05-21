@@ -53,7 +53,8 @@ while ($row = $result->fetch_array()) {
       </div> 
 
 
-    <a href="deck-erstellen.php" class="cta-button">Neues Deck Erstellen</a>
+      <a href="deck-erstellen.php" class="cta-button">Neues Deck Erstellen</a>
+      <a href="karten-bearbeiten.php" class="cta-button">Karten Bearbeiten</a>
     <br>
     
     <img id="karten" src="img/Karten.jpg" alt="karten">

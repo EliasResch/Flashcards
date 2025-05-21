@@ -76,7 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
         <input type="text" name="original" class="styled-input" placeholder="Original" required><br>
         <input type="text" name="uebersetzung" class="styled-input" placeholder="Übersetzung" required><br>
         <input type="submit" class="cta-button" id="deckHinzufügen" value="Zum Deck hinzufügen"><br>
-        <input type="button" class="cta-button " id="kartenübersicht" value="Zur Kartenübersicht" onclick="window.location.href='karten-übersicht.php?deck=<?php echo urlencode($_GET['deck']); ?>';"><br>
         <input type="button" class="cta-button" id="startseite" value="Zur Startseite" onclick="window.location.href='index.php';">
 
     </form>
