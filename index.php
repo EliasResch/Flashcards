@@ -61,7 +61,7 @@ while ($row = $result->fetch_array()) {
       <br>
       <div class="deck-container">
         <?php if (empty($decks)): ?>
-          <p>Es sind keine Decks vorhanden. Erstellen Sie ein neues Deck, um zu beginnen.</p>
+          <p>Es sind keine Decks vorhanden. Erstellen Sie ein neues Deck</p>
         <?php else: ?>
           <?php foreach ($decks as $deck): ?>
             <div class="deck-card">

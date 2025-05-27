@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deck_name'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Deck Ansicht - <?php echo htmlspecialchars($deck_name); ?></title>
+    <title>Deck Erstellen <?php echo htmlspecialchars($deck_name); ?></title>
 </head>
 <body>
     <div class="container mt-5">
