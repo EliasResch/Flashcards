@@ -406,3 +406,25 @@ header h1 {
 .display-option-container .btn:hover {
   background-color: #d95d38;
 }
+/* Container für die gesamte Seite */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Hauptinhalt */
+main {
+  flex: 1;
+}
+
+/* Footer */
+footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+}
