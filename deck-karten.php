@@ -32,6 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
     } else {
         $message = "Fehler: " . $conn->error;
     }
+
+    header("Location: deck-karten.php?deck=" . urlencode($deck_name));
 }
 ?>
 <!DOCTYPE html>
@@ -61,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
             </form>
         </div>
 
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="false">
+        <div id="carouselExampleFade" class="carousel slide" data-bs-ride="false">
             <div class="carousel-inner">
                 <?php 
                 $displayOption = $_GET['displayOption'] ?? 'both'; // Standard: Beides anzeigen

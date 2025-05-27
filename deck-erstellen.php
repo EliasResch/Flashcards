@@ -64,8 +64,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deck_name'])) {
                     
                     <input type="text" name="deck_name" id="deck_name" class="styled-input" placeholder="Deck-Name" required>
                 </div>
-                <button type="submit" class="cta-button">Deck erstellen</button>
-                <a href="index.php" class="cta-button" id="deck-erstellen-zurück">Zurück</a>
+
+                <div id="straight">
+                    <button type="submit" class="cta-button">
+                        Deck erstellen
+                    </button>
+                    <button type="reset" class="cta-button" id="backbutton">Zurück</button>
+
+                </div>
+
             </form>
         <?php else: ?>
             <h1 class="text-center">Deck: <?php echo htmlspecialchars($deck_name); ?></h1>
@@ -112,5 +119,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deck_name'])) {
             </form>
         <?php endif; ?>
     </div>
+
+    <script>
+        document.getElementById('backbutton').addEventListener('click', function() {
+            window.location.href = 'index.php';
+        });
+    </script>
 </body>
 </html>

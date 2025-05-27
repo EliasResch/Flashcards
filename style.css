@@ -97,6 +97,10 @@ h1 {
   text-decoration: none;
 }
 
+#straight {
+  display: flex;
+}
+
 .delete-button {
   display: block;
   margin: auto; /* zentriert horizontal */
@@ -296,11 +300,6 @@ body.datenschutz a:hover {
   color: #333;
 }
 
-#deck-erstellen-zurück {
-  position: relative;
-  top: 20px;
-}
-
 .card-list {
   list-style-type: none;
   padding: 0;
@@ -370,17 +369,16 @@ header h1 {
   vertical-align: middle;
 }
 
-.bearbeiten  {
-  font-size: 40px; 
-  color: black; 
-  text-decoration: none; 
-  transition: text-decoration 0.3s ease; 
+.bearbeiten {
+  font-size: 40px;
+  color: black;
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
 }
 
 .bearbeiten:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
-
 
 .display-option-container {
   position: absolute;
