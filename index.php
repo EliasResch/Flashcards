@@ -29,61 +29,61 @@ while ($row = $result->fetch_array()) {
 </head>
 
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
-  <header>
-    <img src="img/flash.png" alt="Flashcards Logo" class="logo-img">
-    <h1>Flashcards</h1>
-  </header>
-  <main class="tx">
-    <div class="tx-text">
-      <h1> Was ist Flashcards ?</h1><br>
-    </div>
+  <div class="page-container">
+    <header>
+      <img src="img/flash.png" alt="Flashcards Logo" class="logo-img">
+      <h1>Flashcards</h1>
+    </header>
+    <main class="tx">
+      <div class="tx-text">
+        <h1>Was ist Flashcards?</h1><br>
+      </div>
 
-    <div class="flashcards-info">
-      <p>
-        <strong>Flashcards</strong> ist eine Online-Lernplattform, mit der man auf einfache
-        Weise digitale Karteikarten erstellen und lernen kann.
-        Die Grundidee ist simpel: Auf eine Seite der Karteikarte kommt eine Frage,
-        ein Begriff oder ein Wort – auf die Rückseite die passende Antwort, Definition oder Übersetzung.
-      </p>
-      <p>
-        Durch verschiedene Lernmodi wie Abfragen hilft Flashcards dabei, Wissen langfristig zu speichern – ideal zur Prüfungsvorbereitung oder zum Vokabellernen.
-      </p><br>
-      </div> 
-
+      <div class="flashcards-info">
+        <p>
+          <strong>Flashcards</strong> ist eine Online-Lernplattform, mit der man auf einfache
+          Weise digitale Karteikarten erstellen und lernen kann.
+          Die Grundidee ist simpel: Auf eine Seite der Karteikarte kommt eine Frage,
+          ein Begriff oder ein Wort – auf die Rückseite die passende Antwort, Definition oder Übersetzung.
+        </p>
+        <p>
+          Durch verschiedene Lernmodi wie Abfragen hilft Flashcards dabei, Wissen langfristig zu speichern – ideal zur Prüfungsvorbereitung oder zum Vokabellernen.
+        </p><br>
+      </div>
 
       <a href="deck-erstellen.php" class="cta-button">Neues Deck Erstellen</a>
       <a href="karten-bearbeiten.php" class="cta-button">Karten Bearbeiten</a>
-    <br>
-    
-    <img id="karten" src="img/Karten.jpg" alt="karten">
-    <br>
-    
-    <br>
-    <div class="deck-container">
-    <?php foreach ($decks as $deck): ?>
-        <div class="deck-card">
-            <h2><?php echo htmlspecialchars($deck['name']); ?></h2>
-            <p>Karten: <?php echo $deck['count']; ?></p>
-            <a href="deck-karten.php?deck=<?php echo urlencode($deck['name']); ?>" class="cta-button">Deck öffnen</a>
-            <form method="POST" action="deck-loeschen.php" onsubmit="return confirm('Möchten Sie dieses Deck wirklich löschen?');">
+      <br>
+
+      <img id="karten" src="img/Karten.jpg" alt="karten">
+      <br>
+
+      <br>
+      <div class="deck-container">
+        <?php if (empty($decks)): ?>
+          <p>Es sind keine Decks vorhanden. Erstellen Sie ein neues Deck, um zu beginnen.</p>
+        <?php else: ?>
+          <?php foreach ($decks as $deck): ?>
+            <div class="deck-card">
+              <h2><?php echo htmlspecialchars($deck['name']); ?></h2>
+              <p>Karten: <?php echo $deck['count']; ?></p>
+              <a href="deck-karten.php?deck=<?php echo urlencode($deck['name']); ?>" class="cta-button">Deck öffnen</a>
+              <form method="POST" action="deck-loeschen.php" onsubmit="return confirm('Möchten Sie dieses Deck wirklich löschen?');">
                 <input type="hidden" name="deck_name" value="<?php echo htmlspecialchars($deck['name']); ?>">
                 <button type="submit" class="cta-button delete-button">Deck löschen</button>
-            </form>
-        </div>
-    <?php endforeach; ?>
-</div>
-
-  </main>
-
+              </form>
+            </div>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </div>
+    </main>
+  </div>
 
   <footer>
     <p>&copy; 2025 Flashcards. Alle Rechte vorbehalten. 
-        <a href="impressum.html" style="color: #ea6f4a; text-decoration: none;">Impressum, </a>
-        <a href="Datenschutz.html" style="color: #ea6f4a; text-decoration: none;">Dateschutzerklärung</a>
+      <a href="impressum.html" style="color: #ea6f4a; text-decoration: none;">Impressum, </a>
+      <a href="Datenschutz.html" style="color: #ea6f4a; text-decoration: none;">Dateschutzerklärung</a>
     </p>
-</footer>
-
+  </footer>
 </body>
 </html>
