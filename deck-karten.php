@@ -46,15 +46,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Deck: <?php echo htmlspecialchars($deck_name); ?></h1>
+
+        <!-- Auswahlformular im oberen rechten Eck -->
+        <div class="display-option-container">
+            <form method="GET">
+                <input type="hidden" name="deck" value="<?php echo htmlspecialchars($_GET['deck']); ?>">
+                <label for="displayOption" class="form-label">Anzeigemodus:</label>
+                <select name="displayOption" id="displayOption" class="form-select">
+                    <option value="both" <?php echo ($_GET['displayOption'] ?? 'both') === 'both' ? 'selected' : ''; ?>>Beides</option>
+                    <option value="original" <?php echo ($_GET['displayOption'] ?? '') === 'original' ? 'selected' : ''; ?>>Nur Original</option>
+                    <option value="uebersetzung" <?php echo ($_GET['displayOption'] ?? '') === 'uebersetzung' ? 'selected' : ''; ?>>Nur Übersetzung</option>
+                </select>
+                <button type="submit" class="btn btn-primary mt-2">Anzeigen</button>
+            </form>
+        </div>
+
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="false">
             <div class="carousel-inner">
-                <?php foreach ($cards as $index => $card): ?>
+                <?php 
+                $displayOption = $_GET['displayOption'] ?? 'both'; // Standard: Beides anzeigen
+                foreach ($cards as $index => $card): 
+                ?>
                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                         <div class="d-flex flex-column align-items-center">
-                            <h2 class="text-primary">Original</h2>
-                            <p class="fs-4"><?php echo htmlspecialchars($card['original']); ?></p>
-                            <h2 class="text-success mt-4">Übersetzung</h2>
-                            <p class="fs-4"><?php echo htmlspecialchars($card['uebersetzung']); ?></p>
+                            <?php if ($displayOption === 'both' || $displayOption === 'original'): ?>
+                                <h2 class="text-primary">Original</h2>
+                                <p class="fs-4"><?php echo htmlspecialchars($card['original']); ?></p>
+                            <?php endif; ?>
+                            <?php if ($displayOption === 'both' || $displayOption === 'uebersetzung'): ?>
+                                <h2 class="text-success mt-4">Übersetzung</h2>
+                                <p class="fs-4"><?php echo htmlspecialchars($card['uebersetzung']); ?></p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -68,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+    </div>
 
         <?php if (isset($message)): ?>
         <p class="message"><?php echo $message; ?></p>

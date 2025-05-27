@@ -380,3 +380,31 @@ header h1 {
 .bearbeiten:hover {
   text-decoration: underline; 
 }
+
+
+.display-option-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.display-option-container .form-select {
+  width: auto;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.display-option-container .btn {
+  background-color: #ea6f4a;
+  color: white;
+  border: none;
+}
+
+.display-option-container .btn:hover {
+  background-color: #d95d38;
+}
