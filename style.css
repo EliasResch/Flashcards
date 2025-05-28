@@ -3,7 +3,7 @@ body {
   font-family: "Segoe UI", sans-serif;
   background-color: #fcefe4;
   color: #033e2c;
-  padding-left: 20px;
+  padding-left: 1.25rem;
 }
 
 .karten-erstellen {
@@ -21,32 +21,34 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 1.25rem 2.5rem;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #ea6f4a;
 }
 
 .logo img {
-  width: 40px;
-  margin-right: 10px;
+  width: 10%;
+  margin-right: 0.625rem;
 }
 
 .contact {
   color: #ea6f4a;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 60px 40px;
+  padding: 3.75rem 2.5rem;
   flex-wrap: wrap;
 }
 
@@ -57,38 +59,36 @@ header {
 .category {
   color: #ea6f4a;
   font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 14px;
+  letter-spacing: 0.0625rem;
+  font-size: 0.875rem;
 }
 
 h1 {
-  font-size: 48px;
-  margin: 10px 0;
+  font-size: 3rem;
+  margin: 0.625rem 0;
   line-height: 1.2;
 }
 
 .subtitle {
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: 1.125rem;
+  margin-bottom: 1.875rem;
   color: #5e5e5e;
 }
 
 .cta-button {
   display: inline-block;
-  padding: 10px 15px;
-  font-size: 16px;
+  padding: 0.625rem 0.9375rem;
+  font-size: 1rem;
   white-space: nowrap;
-  /* Verhindert Zeilenumbrüche */
   overflow: visible;
-  /* Verhindert das Abschneiden von Text */
   text-align: center;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   background-color: #ea6f4a;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: auto; /*mittig*/
+  margin: auto;
   text-decoration: none;
 }
 
@@ -103,12 +103,12 @@ h1 {
 
 .delete-button {
   display: block;
-  margin: auto; /* zentriert horizontal */
-  background-color: #e74c3c; /* Beispiel-Farbe */
+  margin: auto;
+  background-color: #e74c3c;
 }
 
 .hero-image img {
-  max-width: 450px;
+  max-width: 100%;
   border-radius: 200px 200px 0 0;
   object-fit: cover;
 }
@@ -119,10 +119,10 @@ h1 {
 
 .flashcards-info {
   background-color: #f8f5f5;
-  border-left: 4px solid #d95d38;
-  padding: 1rem 1rem;
+  border-left: 0.25rem solid #d95d38;
+  padding: 1rem;
   margin: 2rem 0;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   font-size: 1rem;
   line-height: 1.6;
   color: #333;
@@ -136,11 +136,11 @@ h1 {
 
 footer {
   background-color: #f8f9fa;
-  padding: 20px;
+  padding: 1.25rem;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 1.25rem;
   border-top: 1px solid #ddd;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #333;
   text-decoration: none;
 }
@@ -155,42 +155,40 @@ footer a:hover {
   text-decoration: none;
 }
 
-/* Karteikarten Erstellen Styles */
 form {
   background-color: #ffffff;
-  padding: 100px 100px;
-  border-radius: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 6.25rem;
+  border-radius: 1.875rem;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: fit-content;
   margin: auto;
 }
 
 .styled-input {
-  border: 4px solid #007bff;
-  padding: 20px;
-  border-radius: 10px;
-  font-size: 32px;
+  border: 0.25rem solid #007bff;
+  padding: 1.25rem;
+  border-radius: 0.625rem;
+  font-size: 2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 25rem;
   box-sizing: border-box;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
   text-decoration: none;
 }
 
 .styled-input:focus {
   outline: none;
   border-color: #0056b3;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 0.3125rem rgba(0, 123, 255, 0.5);
   text-decoration: none;
 }
 
-/*  Styles für Impressum und Datenschutz */
 body.impressum,
 body.datenschutz {
   font-family: Arial, sans-serif;
   margin: 2rem auto;
-  max-width: 800px;
+  max-width: 50rem;
   line-height: 1.8;
   color: #333;
 }
@@ -226,65 +224,59 @@ body.datenschutz a:hover {
   text-decoration: underline;
 }
 
-/* Bild rechts platzieren und obere Kanten abrunden */
 #karten {
   position: absolute;
   top: 7%;
   right: 6%;
   max-width: 25%;
-  border-radius: 10% 10% 10% 10%;
+  border-radius: 10%;
   object-fit: cover;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
 }
 
-/* Container für die Deck-Karten */
 .deck-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1.25rem;
   justify-content: center;
-  padding: 20px;
+  padding: 1.25rem;
 }
 
-/* Einzelne Deck-Karte */
 .deck-card {
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
   text-align: center;
-  width: 300px;
+  width: 100%;
+  max-width: 18.75rem;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Hover-Effekt für die Karten */
 .deck-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.3125rem);
+  box-shadow: 0 0.375rem 0.9375rem rgba(0, 0, 0, 0.2);
 }
 
-/* Titel der Deck-Karte */
 .deck-card h2 {
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #033e2c;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 
-/* Text in der Deck-Karte */
 .deck-card p {
-  font-size: 16px;
+  font-size: 1rem;
   color: #5e5e5e;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
-/* Carousel Styles */
 .carousel {
   background-color: #ffffff;
-  border-radius: 30px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin: 40px auto;
-  max-width: 400px;
+  border-radius: 1.875rem;
+  padding: 1.25rem;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+  margin: 2.5rem auto;
+  max-width: 25rem;
 }
 
 .carousel-control-prev-icon,
@@ -295,8 +287,8 @@ body.datenschutz a:hover {
 
 .progress-indicator {
   text-align: center;
-  margin-top: 10px;
-  font-size: 18px;
+  margin-top: 0.625rem;
+  font-size: 1.125rem;
   color: #333;
 }
 
@@ -309,18 +301,18 @@ body.datenschutz a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 0.625rem;
   border: 1px solid #ccc;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  margin-bottom: 0.625rem;
+  border-radius: 0.3125rem;
 }
 
 .delete-button {
   background-color: #ea6f4a;
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 0.3125rem;
   cursor: pointer;
 }
 
@@ -328,39 +320,26 @@ body.datenschutz a:hover {
   background-color: #d85a36;
 }
 
-#deckHinzufügen {
+#deckHinzufügen,
+#kartenübersicht,
+#startseite {
   position: relative;
-  top: -5px;
-  padding: 20px;
+  padding: 1.25rem;
   font-size: large;
 }
 
-#kartenübersicht {
-  position: relative;
-  top: 0px;
-  padding: 20px;
-  font-size: large;
+#deckHinzufügen {
+  top: -0.3125rem;
 }
 
 #startseite {
-  position: relative;
-  top: 5px;
-  padding: 20px;
-  font-size: large;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px 40px;
-  gap: 16px; /* Abstand zwischen Logo und Text */
-  margin-bottom: 20px;
+  top: 0.3125rem;
 }
 
 .logo-img {
-  height: 70px;
-  margin-right: 10px;
+  height: auto;
+  width: 10%;
+  margin-right: 0.625rem;
 }
 
 header h1 {
@@ -370,7 +349,7 @@ header h1 {
 }
 
 .bearbeiten {
-  font-size: 40px;
+  font-size: 2.5rem;
   color: black;
   text-decoration: none;
   transition: text-decoration 0.3s ease;
@@ -382,19 +361,19 @@ header h1 {
 
 .display-option-container {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.25rem;
+  right: 1.25rem;
   background-color: #ffffff;
-  padding: 10px 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 .display-option-container .form-select {
   width: auto;
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 0.625rem;
 }
 
 .display-option-container .btn {
@@ -406,25 +385,23 @@ header h1 {
 .display-option-container .btn:hover {
   background-color: #d95d38;
 }
-/* Container für die gesamte Seite */
+
 .page-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Hauptinhalt */
 main {
   flex: 1;
 }
 
-/* Footer */
 footer {
   background-color: #f8f9fa;
-  padding: 20px;
+  padding: 1.25rem;
   text-align: center;
   border-top: 1px solid #ddd;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #333;
   text-decoration: none;
 }
