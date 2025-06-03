@@ -3,21 +3,22 @@ $decks = [];
 $conn = new mysqli("localhost", "root", "", "karteikarten");
 $result = $conn->query("SHOW TABLES LIKE 'deck_%'");
 while ($row = $result->fetch_array()) {
-    $table_name = $row[0];
-    $deck_name = str_replace("deck_", "", $table_name);
+  $table_name = $row[0];
+  $deck_name = str_replace("deck_", "", $table_name);
 
-    $count_result = $conn->query("SELECT COUNT(*) AS count FROM $table_name");
-    $count = $count_result->fetch_assoc()['count'];
+  $count_result = $conn->query("SELECT COUNT(*) AS count FROM $table_name");
+  $count = $count_result->fetch_assoc()['count'];
 
-    $decks[] = [
-        'name' => $deck_name,
-        'count' => $count,
-        'table' => $table_name
-    ];
+  $decks[] = [
+    'name' => $deck_name,
+    'count' => $count,
+    'table' => $table_name
+  ];
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,10 +33,12 @@ while ($row = $result->fetch_array()) {
   <div class="page-container">
     <header>
       <img src="img/flash.png" alt="Flashcards Logo" class="logo-img">
-      <h1>Flashcards</h1>
+
+    </header>
     </header>
     <main class="tx">
       <div class="tx-text">
+        <h1>Flashcards</h1>
         <h1>Was ist Flashcards?</h1><br>
       </div>
 
@@ -80,10 +83,11 @@ while ($row = $result->fetch_array()) {
   </div>
 
   <footer>
-    <p>&copy; 2025 Flashcards. Alle Rechte vorbehalten. 
+    <p>&copy; 2025 Flashcards. Alle Rechte vorbehalten.
       <a href="impressum.html" style="color: #ea6f4a; text-decoration: none;">Impressum, </a>
       <a href="Datenschutz.html" style="color: #ea6f4a; text-decoration: none;">Dateschutzerklärung</a>
     </p>
   </footer>
 </body>
+
 </html>

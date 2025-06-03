@@ -281,8 +281,7 @@ body.datenschutz a:hover {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(-20deg)
-    brightness(90%);
+  filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(-20deg) brightness(90%);
 }
 
 .progress-indicator {

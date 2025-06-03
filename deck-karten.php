@@ -38,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
     <link rel="stylesheet" href="style.css">
     <title>Deck Ansicht - <?php echo htmlspecialchars($deck_name); ?></title>
 </head>
+
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Deck: <?php echo htmlspecialchars($deck_name); ?></h1>
@@ -65,9 +67,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
 
         <div id="carouselExampleFade" class="carousel slide" data-bs-ride="false">
             <div class="carousel-inner">
-                <?php 
+                <?php
                 $displayOption = $_GET['displayOption'] ?? 'both'; // Standard: Beides anzeigen
-                foreach ($cards as $index => $card): 
+                foreach ($cards as $index => $card):
                 ?>
                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                         <div class="d-flex flex-column align-items-center">
@@ -94,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
         </div>
     </div>
 
-        <?php if (isset($message)): ?>
+    <?php if (isset($message)): ?>
         <p class="message"><?php echo $message; ?></p>
     <?php endif; ?>
     <form method="POST" action="deck-karten.php?deck=<?php echo urlencode($_GET['deck']); ?>">
@@ -107,4 +109,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
