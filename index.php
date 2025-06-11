@@ -1,4 +1,5 @@
 <?php
+//Verbindung zur Datenbank, Anzeige der Decks und anzahl der Karten in den einzelnen Decks
 $decks = [];
 $conn = new mysqli("localhost", "root", "", "karteikarten");
 $result = $conn->query("SHOW TABLES LIKE 'deck_%'");
@@ -53,7 +54,7 @@ while ($row = $result->fetch_array()) {
           Durch verschiedene Lernmodi wie Abfragen hilft Flashcards dabei, Wissen langfristig zu speichern – ideal zur Prüfungsvorbereitung oder zum Vokabellernen.
         </p><br>
       </div>
-
+      <!--Buttons für neues Deck erstellen und Karten Bearbeiten-->
       <a href="deck-erstellen.php" class="cta-button">Neues Deck Erstellen</a>
       <a href="karten-bearbeiten.php" class="cta-button">Karten Bearbeiten</a>
       <br>
@@ -62,6 +63,7 @@ while ($row = $result->fetch_array()) {
       <br>
 
       <br>
+      <!--Anzeige der Decks, Buttons für Deck öffnen und Deck löschen-->
       <div class="deck-container">
         <?php if (empty($decks)): ?>
           <p>Es sind keine Decks vorhanden. Erstellen Sie ein neues Deck</p>
@@ -81,7 +83,7 @@ while ($row = $result->fetch_array()) {
       </div>
     </main>
   </div>
-
+          <!--Footer für Impressum, Datenschutzerklärung und Kontaktseite-->
   <footer>
     <p>&copy; 2025 Flashcards. Alle Rechte vorbehalten.
       <a href="impressum.html" style="color: #ea6f4a; text-decoration: none;">Impressum, </a>

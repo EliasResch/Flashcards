@@ -359,7 +359,7 @@ header h1 {
 }
 
 .display-option-container {
-  position: absolute;
+  position: absolute; /* Beibehaltung des Stils */
   top: 1.25rem;
   right: 1.25rem;
   background-color: #ffffff;
@@ -368,6 +368,8 @@ header h1 {
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+
+
 
 .display-option-container .form-select {
   width: auto;
