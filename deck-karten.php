@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
         <h1 class="text-center">Deck: <?php echo htmlspecialchars($deck_name); ?></h1>
 
         <!-- Auswahlformular im oberen rechten Eck -->
-        
+
 
         <div id="carouselExampleFade" class="carousel slide" data-bs-ride="false">
             <div class="carousel-inner">
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
                     </div>
                 <?php endforeach; ?>
             </div>
-            
+
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -83,33 +83,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
+            <form method="GET">
+                <input type="hidden" name="deck" value="<?php echo htmlspecialchars($_GET['deck']); ?>">
+                <label for="displayOption" class="form-label">Anzeigemodus:</label>
+                <select name="displayOption" id="displayOption" class="form-select">
+                    <option value="both" <?php echo ($_GET['displayOption'] ?? 'both') === 'both' ? 'selected' : ''; ?>>Beides</option>
+                    <option value="original" <?php echo ($_GET['displayOption'] ?? '') === 'original' ? 'selected' : ''; ?>>Nur Original</option>
+                    <option value="uebersetzung" <?php echo ($_GET['displayOption'] ?? '') === 'uebersetzung' ? 'selected' : ''; ?>>Nur Übersetzung</option>
+                </select>
+                <button type="submit" class="cta-button">Anzeigen</button>
+
+            </form>
         </div>
+
     </div>
-    
+
     <?php if (isset($message)): ?>
         <p class="message"><?php echo $message; ?></p>
     <?php endif; ?>
     <form method="POST" action="deck-karten.php?deck=<?php echo urlencode($_GET['deck']); ?>">
-    <input type="text" name="original" class="styled-input" placeholder="Original" required><br>
-    <input type="text" name="uebersetzung" class="styled-input" placeholder="Übersetzung" required><br>
-    <input type="submit" class="cta-button" id="deckHinzufügen" value="Zum Deck hinzufügen"><br>
-    <input type="button" class="cta-button" id="startseite" value="Zur Startseite" onclick="window.location.href='index.php';"><br>
+        <input type="text" name="original" class="styled-input" placeholder="Original" required><br>
+        <input type="text" name="uebersetzung" class="styled-input" placeholder="Übersetzung" required><br>
+        <input type="submit" class="cta-button" id="deckHinzufügen" value="Zum Deck hinzufügen"><br>
+        <input type="button" class="cta-button" id="startseite" value="Zur Startseite" onclick="window.location.href='index.php';"><br>
+    </form>
 
 
-    <div class="display-option-container">
-        <form method="GET">
-            <input type="hidden" name="deck" value="<?php echo htmlspecialchars($_GET['deck']); ?>">
-            <label for="displayOption" class="form-label">Anzeigemodus:</label>
-            <select name="displayOption" id="displayOption" class="form-select">
-                <option value="both" <?php echo ($_GET['displayOption'] ?? 'both') === 'both' ? 'selected' : ''; ?>>Beides</option>
-                <option value="original" <?php echo ($_GET['displayOption'] ?? '') === 'original' ? 'selected' : ''; ?>>Nur Original</option>
-                <option value="uebersetzung" <?php echo ($_GET['displayOption'] ?? '') === 'uebersetzung' ? 'selected' : ''; ?>>Nur Übersetzung</option>
-            </select>
-            <button type="submit" class="btn btn-primary mt-2">Anzeigen</button>
-        </form>
-    </div>
-</form>
-    
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

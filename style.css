@@ -359,7 +359,7 @@ header h1 {
 }
 
 .display-option-container {
-  position: absolute; /* Beibehaltung des Stils */
+  position: absolute;
   top: 1.25rem;
   right: 1.25rem;
   background-color: #ffffff;
@@ -372,7 +372,7 @@ header h1 {
 
 
 .display-option-container .form-select {
-  width: auto;
+  width: 1cm;
   display: inline-block;
   margin-right: 0.625rem;
 }

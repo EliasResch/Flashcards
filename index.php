@@ -87,7 +87,7 @@ while ($row = $result->fetch_array()) {
   <footer>
     <p>&copy; 2025 Flashcards. Alle Rechte vorbehalten.
       <a href="impressum.html" style="color: #ea6f4a; text-decoration: none;">Impressum, </a>
-      <a href="Datenschutz.html" style="color: #ea6f4a; text-decoration: none;">Dateschutzerklärung</a>
+      <a href="datenschutz.html" style="color: #ea6f4a; text-decoration: none;">Dateschutzerklärung</a>
     </p>
   </footer>
 </body>
