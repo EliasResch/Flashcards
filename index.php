@@ -54,7 +54,7 @@ while ($row = $result->fetch_array()) {
   </div>
 <<<<<<< HEAD
           <footer>
-    <p>&copy; 2025 Flashcards. Alle Rechte vorbehalten.
+    <p>&copy; 2025 Flashcards. Alle Rechte vorbehalten. <br>
       <a href="impressum.html" style="color: #ea6f4a; text-decoration: none;">Impressum |  </a>
       <a href="datenschutz.html" style="color: #ea6f4a; text-decoration: none;">Dateschutzerklärung | </a>
        <a href="kontakt.html" style="color: #ea6f4a; text-decoration: none;">Kontaktseite </a>
