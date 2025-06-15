@@ -3,37 +3,138 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Webprojekt Flashcards</title>
+    <title>Kontakt - Webprojekt Flashcards</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Stellt sicher, dass der Body die Stile aus style.css anwendet */
+      body {
+        background-color: #fcefe4;
+        color: #033e2c;
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      /* Container für den Hauptinhalt, um Footer nach unten zu drücken */
+      .page-container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      /* Die Haupt-Kontakt-Karte */
+      .contact-card {
+        background-color: #ffffff;
+        padding: 2.5rem 3rem;
+        border-radius: 1.875rem;
+        box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .contact-card h1 {
+        color: #033e2c;
+        font-size: 2.5rem; /* H1-Größe angepasst */
+        margin-bottom: 0.5rem;
+      }
+
+      .authors {
+        color: #5e5e5e;
+        margin-bottom: 2rem;
+        font-style: italic;
+      }
+
+      /* Styling für das Formular */
+      .contact-form .form-row {
+        margin-bottom: 1.5rem;
+        text-align: left;
+      }
+
+      .contact-form label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #033e2c;
+      }
+
+      /* Einheitliches Styling für Input-Felder und Textarea */
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #ddd;
+        border-radius: 0.3125rem;
+        font-size: 1rem;
+        font-family: "Segoe UI", sans-serif;
+        box-sizing: border-box; /* Wichtig für korrektes Padding */
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus {
+        outline: none;
+        border-color: #ea6f4a;
+        box-shadow: 0 0 5px rgba(234, 111, 74, 0.5);
+      }
+
+      .form-textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      /* Der Senden-Button übernimmt die Klasse .cta-button aus style.css */
+    </style>
   </head>
   <body>
-    <div class="card">
-      <h1>Webprojekt</h1>
-      <div class="flashcards-label">Flashcards</div>
+    <div class="page-container">
+      <div class="contact-card">
+        <h1>Kontaktieren Sie uns</h1>
+        <p class="authors">LEONIE WIESINGER & ELIAS RESCH</p>
 
-      <div class="authors">
-        LEONIE WIESINGER &<br />
-        ELIAS RESCH
-      </div>
-
-      <div class="contact-section">
-        <h2>Kontaktieren Sie uns</h2>
-        <form class="contact-form">
+        <form class="contact-form" action="#" method="POST">
           <div class="form-row">
-            <label>Name:</label>
-            <input type="text" class="form-input" />
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              required
+            />
           </div>
           <div class="form-row">
-            <label>E-Mail:</label>
-            <input type="email" class="form-input" />
+            <label for="email">E-Mail:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              required
+            />
           </div>
           <div class="form-row">
-            <label>Nachricht:</label>
-            <textarea class="form-textarea"></textarea>
+            <label for="nachricht">Nachricht:</label>
+            <textarea
+              id="nachricht"
+              name="nachricht"
+              class="form-textarea"
+              required
+            ></textarea>
           </div>
-          <button type="submit" class="submit-btn">Senden</button>
+          <button type="submit" class="cta-button">Senden</button>
         </form>
       </div>
     </div>
+
+    <footer>
+      <p>
+        &copy; 2025 Webprojekt Flashcards von Leonie Wiesinger & Elias Resch
+      </p>
+      </footer>
   </body>
 </html>
