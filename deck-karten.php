@@ -6,7 +6,7 @@ if (!isset($_GET['deck'])) {
 
 $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['deck']);
 $table_name = "deck_" . $deck_name;
-$conn = new mysqli("localhost", "root", "", "karteikarten");
+$conn = new mysqli("localhost", "USER443003", "Flashcards1234", "db_443003_2");
 
 // Karten aus dem Deck abrufen
 $cards = [];
@@ -20,7 +20,7 @@ while ($row = $result->fetch_assoc()) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
     $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['deck']);
     $table_name = "deck_" . $deck_name;
-    $conn = new mysqli("localhost", "root", "", "karteikarten");
+    $conn = new mysqli("localhost", "USER443003", "Flashcards1234", "db_443003_2");
     $original = $conn->real_escape_string($_POST['original']);
     $uebersetzung = $conn->real_escape_string($_POST['uebersetzung']);
 

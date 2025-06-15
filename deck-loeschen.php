@@ -10,7 +10,7 @@
 <body>
     <?php
     // Verbindung zur Datenbank herstellen
-    $conn = new mysqli("localhost", "root", "", "karteikarten");
+    $conn = new mysqli("localhost", "USER443003", "Flashcards1234", "db_443003_2");
 
     if ($conn->connect_error) {
         die("Verbindung zur Datenbank fehlgeschlagen: " . $conn->connect_error);

@@ -1,7 +1,7 @@
 <?php
 //Verbindung zur Datenbank, Anzeige der Decks und anzahl der Karten in den einzelnen Decks
 $decks = [];
-$conn = new mysqli("localhost", "root", "", "karteikarten");
+$conn = new mysqli("localhost", "USER443003", "Flashcards1234", "db_443003_2");
 $result = $conn->query("SHOW TABLES LIKE 'deck_%'");
 while ($row = $result->fetch_array()) {
   $table_name = $row[0];
