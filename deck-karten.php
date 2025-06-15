@@ -5,30 +5,24 @@ if (!isset($_GET['deck'])) {
     exit();
 }
 
-// Bereinigen des Deck-Namens und Erstellen des Tabellennamens
 $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['deck']);
 $table_name = "deck_" . $deck_name;
 // Verbindung zur Datenbank herstellen
 $conn = new mysqli("localhost", "USER443003", "Flashcards1234", "db_443003_2");
-
-// Alle Karten aus der entsprechenden Deck-Tabelle abrufen
+ //Neue Karten zum Deck hinzufügen
 $cards = [];
 $result = $conn->query("SELECT * FROM $table_name");
 while ($row = $result->fetch_assoc()) {
     $cards[] = $row;
 }
 
-// Verarbeitung des Formulars zum Hinzufügen einer neuen Karte
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
-    // Erneutes Bereinigen des Deck-Namens und Herstellen der DB-Verbindung
     $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['deck']);
     $table_name = "deck_" . $deck_name;
     $conn = new mysqli("localhost", "USER443003", "Flashcards1234", "db_443003_2");
-    // Sichern der Eingabedaten vor dem Einfügen in die Datenbank
     $original = $conn->real_escape_string($_POST['original']);
     $uebersetzung = $conn->real_escape_string($_POST['uebersetzung']);
 
-    // SQL-Befehl zum Einfügen der neuen Karte in die Deck-Tabelle
     $sql = "INSERT INTO $table_name (original, uebersetzung) VALUES ('$original', '$uebersetzung')";
 
     if ($conn->query($sql) === TRUE) {
@@ -37,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
         $message = "Fehler: " . $conn->error;
     }
 
-    // Seite neu laden, um die neue Karte anzuzeigen
     header("Location: deck-karten.php?deck=" . urlencode($deck_name));
 }
 ?>
@@ -50,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['deck'])) {
         <div id="carouselExampleFade" class="carousel slide" data-bs-ride="false">
             <div class="carousel-inner">
                 <?php
-                // Anzeigemodus aus dem GET-Parameter holen (Standard: beides)
+               //Karten im Deck anzeigen
                 $displayOption = $_GET['displayOption'] ?? 'both';
-                // Schleife durch alle Karten und Anzeige im Carousel
+               
                 foreach ($cards as $index => $card):
                 ?>
                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">

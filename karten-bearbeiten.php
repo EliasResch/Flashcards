@@ -14,11 +14,11 @@ while ($row = $result->fetch_array()) {
     $decks[] = $row[0];
 }
 
-// Verarbeitung von POST-Requests zum Aktualisieren oder Löschen von Karten
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Wenn eine Karte aktualisiert werden soll
+ 
     if (isset($_POST['update_card'])) {
-        // Daten aus dem Formular holen und bereinigen
+       
         $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_POST['deck_name']);
         $card_id = (int)$_POST['card_id'];
         $original = $conn->real_escape_string($_POST['original']);
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // SQL-Befehl zum Aktualisieren der Karte
         $sql = "UPDATE $deck_name SET original='$original', uebersetzung='$uebersetzung' WHERE id=$card_id";
         $conn->query($sql);
-    // Wenn eine Karte gelöscht werden soll
+   
     } elseif (isset($_POST['delete_card'])) {
         $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_POST['deck_name']);
         $card_id = (int)$_POST['card_id'];
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php if (isset($_GET['deck'])): ?>
         <?php
-        // Deck-Namen bereinigen und alle Karten dieses Decks abrufen
+    
         $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['deck']);
         $cards = $conn->query("SELECT * FROM $deck_name");
         ?>
