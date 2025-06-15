@@ -32,11 +32,6 @@ while ($row = $result->fetch_array()) {
 
 <body>
   <div class="page-container">
-    <header>
-      <img src="img/flash.png" alt="Flashcards Logo" class="logo-img">
-
-    </header>
-    </header>
     <main class="tx">
       <div class="tx-text">
         <h1>Flashcards</h1>
