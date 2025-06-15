@@ -1,31 +1,38 @@
 <?php
+// Verbindung zur Datenbank herstellen
 $conn = new mysqli("localhost", "USER443003", "Flashcards1234", "db_443003_2");
 
+// Überprüfen der Datenbankverbindung
 if ($conn->connect_error) {
     die("Verbindung zur Datenbank fehlgeschlagen: " . $conn->connect_error);
 }
 
-// Fetch all decks
+// Alle Deck-Tabellen abrufen, um sie aufzulisten
 $decks = [];
 $result = $conn->query("SHOW TABLES LIKE 'deck_%'");
 while ($row = $result->fetch_array()) {
     $decks[] = $row[0];
 }
 
-// Handle card updates
+// Verarbeitung von POST-Requests zum Aktualisieren oder Löschen von Karten
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Wenn eine Karte aktualisiert werden soll
     if (isset($_POST['update_card'])) {
+        // Daten aus dem Formular holen und bereinigen
         $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_POST['deck_name']);
         $card_id = (int)$_POST['card_id'];
         $original = $conn->real_escape_string($_POST['original']);
         $uebersetzung = $conn->real_escape_string($_POST['uebersetzung']);
 
+        // SQL-Befehl zum Aktualisieren der Karte
         $sql = "UPDATE $deck_name SET original='$original', uebersetzung='$uebersetzung' WHERE id=$card_id";
         $conn->query($sql);
+    // Wenn eine Karte gelöscht werden soll
     } elseif (isset($_POST['delete_card'])) {
         $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_POST['deck_name']);
         $card_id = (int)$_POST['card_id'];
 
+        // SQL-Befehl zum Löschen der Karte
         $sql = "DELETE FROM $deck_name WHERE id=$card_id";
         $conn->query($sql);
     }
@@ -33,14 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Karten Bearbeiten</title>
-</head>
-
 <body>
     <h1>Karten Bearbeiten</h1>
 
@@ -50,15 +49,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     <?php endforeach; ?>
 
-
     <?php if (isset($_GET['deck'])): ?>
         <?php
+        // Deck-Namen bereinigen und alle Karten dieses Decks abrufen
         $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_GET['deck']);
         $cards = $conn->query("SELECT * FROM $deck_name");
         ?>
         <h2>Deck: <?php echo htmlspecialchars(str_replace("deck_", "", $deck_name)); ?></h2>
+        
         <?php while ($card = $cards->fetch_assoc()): ?>
-
             <form method="POST">
                 <input type="hidden" name="deck_name" value="<?php echo htmlspecialchars($deck_name); ?>">
                 <input type="hidden" name="card_id" value="<?php echo htmlspecialchars($card['id']); ?>">
@@ -71,5 +70,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endwhile; ?>
     <?php endif; ?>
 </body>
-
 </html>

@@ -2,35 +2,39 @@
 // Verbindung zur Datenbank herstellen
 $conn = new mysqli("localhost", "USER443003", "Flashcards1234", "db_443003_2");
 
+// Überprüfen, ob die Datenbankverbindung erfolgreich war
 if ($conn->connect_error) {
     die("Verbindung zur Datenbank fehlgeschlagen: " . $conn->connect_error);
 }
 
-// Variablen initialisieren
+// Variablen für Deck-Namen, Karten und Fehlermeldungen initialisieren
 $deck_name = "";
 $cards = [];
 $error = "";
 
-// Deck erstellen
+// Verarbeitung des Formulars zum Erstellen eines neuen Decks
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deck_name'])) {
+    // Bereinigen des Deck-Namens, um nur Buchstaben, Zahlen und Unterstriche zu erlauben
     $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_POST['deck_name']);
     if (empty($deck_name)) {
         $error = "Bitte geben Sie einen gültigen Deck-Namen ein.";
     } else {
+        // Erstellen des Tabellennamens für das neue Deck
         $table_name = "deck_" . $deck_name;
 
-        // Prüfen, ob die Tabelle bereits existiert
+        // Prüfen, ob eine Tabelle mit diesem Namen bereits existiert
         $result = $conn->query("SHOW TABLES LIKE '$table_name'");
         if ($result->num_rows > 0) {
             $error = "Ein Deck mit diesem Namen existiert bereits.";
         } else {
-            // Tabelle erstellen
+            // SQL-Befehl zum Erstellen der neuen Tabelle für das Deck
             $sql = "CREATE TABLE $table_name (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 original TEXT NOT NULL,
                 uebersetzung TEXT NOT NULL
             )";
 
+            // Ausführen des SQL-Befehls und Weiterleitung bei Erfolg
             if ($conn->query($sql) === TRUE) {
                 header("Location: deck-erstellen.php?deck=" . urlencode($deck_name));
                 exit();
@@ -40,12 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deck_name'])) {
         }
     }
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deck_name'])) {
     <link rel="stylesheet" href="style.css">
     <title>Deck Erstellen <?php echo htmlspecialchars($deck_name); ?></title>
 </head>
-
 <body>
     <div class="container mt-5">
         <?php if (empty($deck_name)): ?>
@@ -63,70 +63,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deck_name'])) {
             <?php endif; ?>
             <form method="POST" class="mt-4">
                 <div class="mb-3">
-
                     <input type="text" name="deck_name" id="deck_name" class="styled-input" placeholder="Deck-Name" required>
                 </div>
-
                 <div id="straight">
                     <button type="submit" class="cta-button">
                         Deck erstellen
                     </button>
                     <button type="reset" class="cta-button" id="backbutton">Zurück</button>
-
                 </div>
-
             </form>
         <?php else: ?>
             <h1 class="text-center">Deck: <?php echo htmlspecialchars($deck_name); ?></h1>
             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <?php foreach ($cards as $index => $card): ?>
-                        <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
-                            <div class="d-flex flex-column align-items-center">
-                                <h2 class="text-primary">Original</h2>
-                                <p class="fs-4"><?php echo htmlspecialchars($card['original']); ?></p>
-                                <h2 class="text-success mt-4">Übersetzung</h2>
-                                <p class="fs-4"><?php echo htmlspecialchars($card['uebersetzung']); ?></p>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-
-            <!-- Fortschrittsanzeige -->
-            <div class="progress-indicator">
-                <span id="progress">1/<?php echo count($cards); ?></span>
-            </div>
-
             <form method="POST" class="mt-5">
                 <h3>Neue Karte hinzufügen</h3>
-                <div class="mb-3">
-                    <label for="original" class="form-label">Original</label>
-                    <input type="text" name="original" id="original" class="form-control" placeholder="Originaltext" required>
-                </div>
-                <div class="mb-3">
-                    <label for="uebersetzung" class="form-label">Übersetzung</label>
-                    <input type="text" name="uebersetzung" id="uebersetzung" class="form-control" placeholder="Übersetzung" required>
-                </div>
                 <button type="submit" class="btn btn-success">Karte hinzufügen</button>
                 <a href="index.php" class="btn btn-secondary">Zurück</a>
             </form>
         <?php endif; ?>
     </div>
-
     <script>
+        // JavaScript für den "Zurück"-Button
         document.getElementById('backbutton').addEventListener('click', function() {
             window.location.href = 'index.php';
         });
     </script>
 </body>
-
 </html>
