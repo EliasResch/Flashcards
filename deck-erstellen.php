@@ -2,39 +2,39 @@
 // Verbindung zur Datenbank herstellen
 $conn = new mysqli("localhost", "USER443003", "Flashcards1234", "db_443003_2");
 
-// Überprüfen der Datenbankverbindung
+// Überprüfen, ob die Datenbankverbindung erfolgreich war
 if ($conn->connect_error) {
     die("Verbindung zur Datenbank fehlgeschlagen: " . $conn->connect_error);
 }
-//Erstellen eines neuen Decks
 
+// Variablen für Deck-Namen, Karten und Fehlermeldungen initialisieren
 $deck_name = "";
 $cards = [];
 $error = "";
 
-
+// Verarbeitung des Formulars zum Erstellen eines neuen Decks
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deck_name'])) {
-   
+    // Bereinigen des Deck-Namens, um nur Buchstaben, Zahlen und Unterstriche zu erlauben
     $deck_name = preg_replace('/[^a-zA-Z0-9_]/', '', $_POST['deck_name']);
     if (empty($deck_name)) {
         $error = "Bitte geben Sie einen gültigen Deck-Namen ein.";
     } else {
-       
+        // Erstellen des Tabellennamens für das neue Deck
         $table_name = "deck_" . $deck_name;
 
-        
+        // Prüfen, ob eine Tabelle mit diesem Namen bereits existiert
         $result = $conn->query("SHOW TABLES LIKE '$table_name'");
         if ($result->num_rows > 0) {
             $error = "Ein Deck mit diesem Namen existiert bereits.";
         } else {
-           
+            // SQL-Befehl zum Erstellen der neuen Tabelle für das Deck
             $sql = "CREATE TABLE $table_name (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 original TEXT NOT NULL,
                 uebersetzung TEXT NOT NULL
             )";
 
-           
+            // Ausführen des SQL-Befehls und Weiterleitung bei Erfolg
             if ($conn->query($sql) === TRUE) {
                 header("Location: deck-erstellen.php?deck=" . urlencode($deck_name));
                 exit();
